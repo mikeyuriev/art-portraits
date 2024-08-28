@@ -1,0 +1,21 @@
+{% import "../utilities.njk" as u with context %}
+
+<header class="page__block page__block--header hero">
+    <picture>
+        <source media="(orientation: landscape) and (min-width: 48rem)" srcset="/assets/images/hero_desktop.webp" width="1024" height="546">
+        <source srcset="/assets/images/hero_mobile.webp" width="1023" height="1023">
+        <img class="hero__image" src="/assets/images/hero_mobile.webp" width="1023" height="1023">
+    </picture>
+    <div class="hero__content">
+        <h1 class="hero__heading">
+            <span class="hero__heading-text hero__heading-text--line-1">Арт-портреты</span>
+            <span class="hero__heading-text hero__heading-text--line-2">по фото на холсте</span>
+            <span class="hero__heading-text hero__heading-text--line-3">от цифрового художника</span>
+            <span class="hero__heading-text hero__heading-text--line-4">Морозовой Олеси</span>
+        </h1>
+        <div class="hero__contacts">
+            {{ u.icon_link("whatsapp") }}
+            {{ u.icon_link("phone") }}
+        </div>
+    </div>
+</header>

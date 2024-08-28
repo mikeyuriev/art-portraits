@@ -1,0 +1,76 @@
+@use "sass:list";
+@use "sass:map";
+@use "theme";
+
+@mixin inset($value: 0) {
+    left: $value;
+    top: $value;
+    right: $value;
+    bottom: $value;
+}
+
+@mixin icon($keys, $size) {
+    &::before {
+        display: block;
+        content: "";
+        width: $size;
+        height: $size;
+        background-color: currentColor;
+        mask-image: theme.icon-url($keys);
+        mask-repeat: no-repeat;
+        mask-size: 100% 100%;
+    }
+}
+
+@mixin font-size($keys) {
+    $size: theme.size(list.join("font", $keys));
+    $line-height: theme.line-height($keys);
+    font-size: $size;
+    line-height: $line-height;
+    &:first-child {
+        margin-top: calc(($line-height - 1) / 2 * -1em);
+    }
+}
+
+@mixin text-container() {
+    font-size: theme.size("font" "base");
+    & > * {
+        margin-bottom: theme.size("font" "base");
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    h2 {
+        @include font-size("text" "heading");
+    }
+
+    p,
+    ul {
+        @include font-size("text" "normal");
+    }
+
+    li {
+        list-style: disc;
+        list-style-position: inside;
+    }
+
+    strong {
+        font-weight: normal;
+        color: theme.color("accent");
+    }
+}
+
+@mixin focus($color: theme.color("brand" "1")) {
+    &:focus-visible {
+        outline: 1px dotted $color;
+        outline-offset: 1px;
+    }
+
+    @supports not selector(:focus-visible) {
+        &:focus {
+            outline: 1px dotted $color;
+            outline-offset: 1px;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.price-list {
+    padding: theme.size("padding" "page");
+    background-color: theme.color("brand" "2");
+    @include u.text-container();
+}
+
+.price-list__list {
+    display: flex;
+    flex-direction: column;
+    &--extra li {
+        list-style: none;
+    }
+}

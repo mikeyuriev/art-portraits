@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "sass:math";
+
+@function strip-unit($number) {
+    @if type-of($number)=="number" and not unitless($number) {
+        @return math.div($number, ($number * 0 + 1));
+    }
+
+    @return $number;
+}
+
+
+@function get-or-error($args...) {
+    @if map.has-key($args...) {
+        @return map.get($args...);
+    }
+    @error  "Map key not found.";
+}

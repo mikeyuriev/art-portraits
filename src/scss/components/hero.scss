@@ -1,0 +1,63 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.hero {
+    position: relative;
+    background-color: theme.color("accent");
+}
+
+.hero__image {
+    width: 100%;
+}
+
+.hero__content {
+    @include u.inset();
+    position: absolute;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr max-content 1fr;
+    padding: theme.size("padding" "page");
+    gap: theme.size("spacing" "xl");
+    color: theme.color("white");
+}
+
+.hero__heading {
+    grid-row-start: 2;
+}
+
+.hero__heading-text {
+    display: block;
+    &--line-1 {
+        text-transform: uppercase;
+        font-weight: bold;
+        @include  u.font-size("hero" "heading" "lvl1");
+    }
+
+    &--line-2 {
+        font-weight: bold;
+        @include  u.font-size("hero" "heading" "lvl2");
+    }
+    &--line-3 {
+        @include  u.font-size("hero" "heading" "lvl3");
+    }
+
+    &--line-4 {
+        font-weight: bold;
+        @include  u.font-size("hero" "heading" "lvl3");
+    }
+}
+
+.hero__contacts {
+    grid-row-start: 3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    align-content: end;
+    gap: theme.size("spacing" "md");
+    font-size: theme.size("font" "base");
+
+    & > .icon-link--phone > .icon-link__text {
+        font-weight: bold;
+    }
+}

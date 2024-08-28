@@ -1,0 +1,8 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.greeting {
+    padding: theme.size("padding" "page");
+    background-color: theme.color("brand" "1");
+    @include u.text-container();
+}

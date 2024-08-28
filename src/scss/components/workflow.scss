@@ -1,0 +1,14 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.workflow {
+    padding: theme.size("padding" "page");
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: theme.size("spacing" "sm");
+    background-color: theme.color("brand" "5");
+}
+
+.workflow__image {
+    width: 100%;
+}

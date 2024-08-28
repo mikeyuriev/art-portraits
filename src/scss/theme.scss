@@ -1,0 +1,137 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:map";
+@use "sass:meta";
+@use "helpers" as h;
+
+@function device($keys) {
+    @return h.get-or-error($devices, $keys...);
+}
+
+@function color($keys) {
+    @return h.get-or-error($colors, $keys...);
+}
+
+@function line-height($keys) {
+    @return h.get-or-error($line-heights, $keys...);
+}
+
+@function fluid-size($min, $max, $min-vw: $fluid-min, $max-vw: $fluid-max) {
+    $unit: unit($min);
+
+    @if (unit($max), unit($min-vw), unit($max-vw)) !=($unit, $unit, $unit) {
+        @error "fluid-size(): Units doesn't match";
+    }
+
+    $min_: h.strip-unit($min);
+    $max_: h.strip-unit($max);
+    $min-vw_: h.strip-unit($min-vw);
+    $max-vw_: h.strip-unit($max-vw);
+    $v: calc(100 * ($max_ - $min_) / ($max-vw_ - $min-vw_));
+    $r: calc(($min-vw_ * $max_ - $max-vw_ * $min_) / ($min-vw_ - $max-vw_));
+    @return clamp(
+        #{$min_}#{$unit},
+        calc(#{$v}vw + #{$r}#{$unit}),
+        #{$max_}#{$unit}
+    );
+}
+
+@function size($keys, $min-vw: $fluid-min, $max-vw: $fluid-max) {
+    $value: h.get-or-error($sizes, $keys...);
+    @if meta.type-of($value) == "list" {
+        $min: math.min($value...);
+        $max: math.max($value...);
+        @return fluid-size($min, $max, $fluid-min, $fluid-max);
+    } @else if meta.type-of($value) == "number" {
+        @return $value;
+    }
+    @error "size(): Internal error";
+}
+
+@function icon-url($keys...) {
+    @return url(h.get-or-error($icons, $keys...));
+}
+
+$devices: (
+    "xxs": 20rem,
+    "xs": 24rem,
+    "sm": 40rem,
+    "md": 48rem,
+    "lg": 64rem,
+);
+
+$page-width: device(lg);
+$fluid-min: device(xs);
+$fluid-max: $page-width;
+
+$line-heights: (
+    "base": 1.5,
+    "hero": (
+        "contacts": 1.1,
+        "heading": (
+            "lvl1": 1.1,
+            "lvl2": 1.2,
+            "lvl3": 1.5,
+        ),
+    ),
+    "text": (
+        "normal": 1.75,
+        "heading": 1.2,
+    ),
+);
+
+$sizes: (
+    "font": (
+        "base": 1rem 1.125rem,
+        "hero": (
+            "contacts": 1em,
+            "heading": (
+                "lvl1": 2.5rem 6rem,
+                "lvl2": 1.5rem 3rem,
+                "lvl3": 1rem 2rem,
+            ),
+        ),
+        "text": (
+            "normal": 1em,
+            "heading": 2em,
+        ),
+    ),
+    "padding": (
+        "page": 1.66rem 4rem,
+        "inter": 2.5rem 4rem,
+    ),
+    "spacing": (
+        "xs": 0.16rem 0.25rem,
+        "sm": 0.33rem 0.5rem,
+        "md": 0.5rem 1rem,
+        "lg": 0.66rem 2.5rem,
+        "xl": 1.25rem 3rem,
+    ),
+    "ribbon": 1.5rem 3rem,
+);
+
+$colors: (
+    "white": #fffff0,
+    "black": #111100,
+    "accent": #b91c1c,
+    "contact-link": (
+        "vk": #0077ff,
+        "whatsapp": #25d366,
+        "phone": transparent,
+    ),
+    "brand": (
+        "1": #f6f6ee,
+        "2": #fdfdf5,
+        "3": #f7f4e5,
+        "4": #8e8b82,
+        "5": #f4ecd7,
+    ),
+);
+
+$icons: (
+    "vk": "~/assets/svg/icons/vk.svg",
+    "whatsapp": "~/assets/svg/icons/whatsapp.svg",
+    "phone": "~/assets//svg/icons/phone.svg",
+    "arrow-left": "~/assets/svg/icons/arrow_left.svg",
+    "arrow-right": "~/assets/svg/icons/arrow_right.svg",
+);

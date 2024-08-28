@@ -1,0 +1,11 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.sizes {
+    padding: theme.size("padding" "page");
+    background-color: theme.color("brand" "3");
+}
+
+.sizes__image {
+    width: 100%;
+}

@@ -1,0 +1,18 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.footer {
+    padding: theme.size("padding" "page");
+    background-color: theme.color("brand" "4");
+    display: flex;
+    flex-direction: column;
+    gap: theme.size("spacing" "md");
+    font-size: theme.size("font" "base");
+    color: theme.color("white");
+}
+
+.footer__messangers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: theme.size("spacing" "md");
+}

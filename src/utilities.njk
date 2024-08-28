@@ -1,0 +1,5 @@
+{% macro icon_link(id) %}
+<a class="icon-link icon-link--{{id}}" href="{{ DATA.contactLinks[id].href }}">
+    <span class="icon-link__text">{{ DATA.contactLinks[id].text }}</span>
+</a>
+{% endmacro %}

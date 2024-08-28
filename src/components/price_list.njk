@@ -1,0 +1,33 @@
+{% macro list(items) %}
+    {% for item in items %}
+        <li>
+            {{ item.item }} — {{ item.price }}
+            {% if item.action %}
+                <strong>{{ item.action }}</strong>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+<section class="price-list">
+    {% markdown %}
+        {% include "../md/price_list_intro.md" %}
+    {% endmarkdown %}
+    <ul class="price-list__list price-list__list--main">
+    {% for item in DATA.priceList.main %}
+        <li>
+            {{ item.width }}x{{ item.height }} см. — {{ item.price }} руб.
+            {% if item.action %}
+                <strong>Внимание! Сейчас идёт АКЦИЯ на портреты этого размера — {{ item.action }} руб. вместо {{ item.price }} руб!</strong>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    <ul class="price-list__list price-list__list--extra">
+    {% for item in DATA.priceList.extra %}
+        <li>
+            {{ item.item }} — {{ item.price }}
+        </li>
+    {% endfor %}
+    </ul>
+</section>

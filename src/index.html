@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% include "./src/components/favicon.njk" %}
+    <title>Арт-портреты по фото на холсте от цифрового художника Морозовой Олеси</title>
+  </head>
+  <body>
+    <div class="page">
+      {% include "./src/components/hero.njk" %}
+      {% include "./src/components/main.njk" %}
+      {% include "./src/components/footer.njk" %}
+      <script type="module" src="/index.ts"></script>
+    </div>
+  </body>
+</html>

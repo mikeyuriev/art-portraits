@@ -1,0 +1,24 @@
+@use "../theme";
+
+.page {
+    max-width: theme.$page-width;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.page__block {
+    flex-basis: auto;
+    &--header,
+    &--footer {
+        flex-grow: 0;
+        flex-shrink: 1;
+    }
+    &--main {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+}

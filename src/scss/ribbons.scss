@@ -1,0 +1,25 @@
+@use "theme";
+
+.greeting, .gallery, .price-list, .sizes, .workflow {
+    $padding: theme.size("padding" "inter");
+    $height: theme.size("ribbon");
+    $height_hack: calc($height + 2px);
+    $y: calc($height * -1);
+    mask:
+        url("~/assets/svg/ribbon.svg") no-repeat 0 0 / 100% $height_hack,
+        linear-gradient(black, black) no-repeat 0 $height;
+    padding-top: calc($padding + ($height * 0.5));
+    margin-top: $y;
+}
+
+.hero__content {
+    $padding: theme.size("padding" "page");
+    $height: theme.size("ribbon");
+    padding-bottom: calc($padding + ($height * 0.5));
+}
+
+.greeting, .gallery, .price-list, .sizes {
+    $padding: theme.size("padding" "inter");
+    $height: theme.size("ribbon");
+    padding-bottom: calc($padding + ($height * 0.5));
+}
