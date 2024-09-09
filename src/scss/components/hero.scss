@@ -14,11 +14,16 @@
     @include u.inset();
     position: absolute;
     overflow: hidden;
-    display: grid;
-    grid-template-rows: 1fr max-content 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: theme.size("padding" "page");
     gap: theme.size("spacing" "xl");
     color: theme.color("white");
+    @media screen and (min-width: theme.device("xxs")) {
+        display: grid;
+        grid-template-rows: 1fr max-content 1fr;            
+    }
 }
 
 .hero__heading {
