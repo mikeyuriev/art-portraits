@@ -18,15 +18,21 @@ interface GalleryImage {
 }
 
 function readGalleryImages(): GalleryImage[] {
-    const galleryImages = [
+    const images = [
         ...readdirSync(resolve(__dirname, "src/assets/images/gallery")),
     ];
-    return [...galleryImages.filter((src) => !src.endsWith(".min.webp"))]
+    return [...images.filter((src) => !src.endsWith(".min.webp"))]
         .sort()
         .map((src) => ({
             src: `/assets/images/gallery/${src}`,
             srcMin: `/assets/images/gallery/${basename(src, ".webp")}.min.webp`,
         }));
+}
+
+function readWorkflowImages(): string[] {
+    return [...readdirSync(resolve(__dirname, "src/assets/images/workflow"))]
+        .sort()
+        .map((src) => `/assets/images/workflow/${src}`);
 }
 
 export default defineConfig({
@@ -56,7 +62,11 @@ export default defineConfig({
             nunjucksEnvironment: nunjucksEnv,
             variables: {
                 "index.html": {
-                    DATA: { ...DATA, galleryImages: readGalleryImages() },
+                    DATA: {
+                        ...DATA,
+                        galleryImages: readGalleryImages(),
+                        workflowImages: readWorkflowImages(),
+                    },
                 },
             },
         }),
