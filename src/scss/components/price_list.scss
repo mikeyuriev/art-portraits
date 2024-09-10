@@ -10,7 +10,10 @@
 .price-list__list {
     display: flex;
     flex-direction: column;
-    &--extra li {
-        list-style: none;
+    &--extra {
+        gap: theme.size("font" "base");
+        & li {
+            list-style: none;
+        }
     }
 }
