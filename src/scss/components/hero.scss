@@ -23,6 +23,7 @@
     @media screen and (min-width: theme.device("xxs")) {
         display: grid;
         grid-template-rows: 1fr max-content 1fr;            
+        justify-content: stretch;
     }
 }
 
