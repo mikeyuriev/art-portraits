@@ -18,7 +18,7 @@
         <li>
             {{ item.width }}x{{ item.height }} см. — {{ item.price }} руб.
             {% if item.action %}
-                <strong>Внимание! Сейчас идёт АКЦИЯ на портреты этого размера — {{ item.action }} руб. вместо {{ item.price }} руб!</strong>
+                <strong>Сейчас идёт АКЦИЯ на портреты этого размера — {{ item.action }} руб. вместо {{ item.price }} руб!</strong>
             {% endif %}
         </li>
     {% endfor %}
