@@ -1,27 +1,19 @@
 {% macro list(items) %}
     {% for item in items %}
-        <li>
-            {{ item.item }} — {{ item.price }}
-            {% if item.action %}
-                <strong>{{ item.action }}</strong>
-            {% endif %}
-        </li>
-    {% endfor %}
-{% endmacro %}
-
-<section class="price-list">
-    {% markdown %}
-        {% include "../md/price_list_intro.md" %}
-    {% endmarkdown %}
-    <ul class="price-list__list price-list__list--main">
-    {% for item in DATA.priceList.main %}
-        <li>
+            <li>
             {{ item.width }}x{{ item.height }} см. — {{ item.price }} руб.
             {% if item.action %}
                 <strong>Сейчас идёт АКЦИЯ на портреты этого размера — {{ item.action }} руб. вместо {{ item.price }} руб!</strong>
             {% endif %}
-        </li>
+            </li>
     {% endfor %}
+{% endmacro %}
+
+<section class="price-list">
+    <h2>Цены</h2>
+    <p>Печать портрета на натуральном холсте с натяжкой на деревянный подрамник. Цена указана за изображение одного человека, за каждое дополнительное лицо на портрете прибавляем 1000 руб.</p>
+    <ul class="price-list__list price-list__list--main">
+    {{ list(DATA.priceList.main)}}
     </ul>
     <ul class="price-list__list price-list__list--extra">
     {% for item in DATA.priceList.extra %}
@@ -29,5 +21,10 @@
             {{ item.item }} — {{ item.price }}
         </li>
     {% endfor %}
+    </ul>
+    <hr class="price-list__hr">
+    <p>При желании вы можете заказать роспись напечатанного портрета акриловыми красками. Цена указана за изображение одного человека, за каждое дополнительное лицо на портрете прибавляем 2600 руб.</p>
+    <ul class="price-list__list price-list__list--acryl">
+        {{ list(DATA.priceList.acryl)}}    
     </ul>
 </section>

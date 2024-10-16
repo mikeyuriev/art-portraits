@@ -59,6 +59,15 @@
         font-weight: normal;
         color: theme.color("accent");
     }
+
+    hr {
+        border: none;
+        border-top: 3px dotted theme.color("black");
+        color: theme.color("accent");
+        overflow: visible;
+        text-align: center;
+        margin: calc(theme.size("font" "base") * 2) 0;
+    }
 }
 
 @mixin focus($color: theme.color("brand" "1")) {
