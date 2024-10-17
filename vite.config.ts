@@ -8,12 +8,14 @@ import { marked } from "marked";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 
 import * as DATA from "./src/data.json";
+import * as ALTS from "./src/gallery.json";
 
 const nunjucksEnv = nunjucks.configure({ noCache: true });
 nunjucksMarkdown.register(nunjucksEnv, marked);
 
 interface GalleryImage {
     src: string;
+    alt: string;
     srcMin: string;
 }
 
@@ -25,6 +27,7 @@ function readGalleryImages(): GalleryImage[] {
         .sort()
         .map((src) => ({
             src: `/assets/images/gallery/${src}`,
+            alt: ALTS[src],
             srcMin: `/assets/images/gallery/${basename(src, ".webp")}.min.webp`,
         }));
 }
