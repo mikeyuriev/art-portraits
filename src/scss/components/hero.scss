@@ -56,14 +56,14 @@
 .hero__contacts {
     grid-row-start: 3;
     display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    align-content: end;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
     gap: theme.size("spacing" "md");
     font-size: theme.size("font" "base");
 
     & > .icon-link--phone > .icon-link__text {
         font-weight: bold;
+        font-size: theme.size("font" "small");
     }
 }
