@@ -4,7 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ DATA.seo.title }}</title>
-    <meta name="description" content="{{ DATA.seo.description}}" />
+    <meta name="description" content="{{ DATA.seo.description }}" />
+    <link rel="canonical" href="{{ DATA.seo.url }}" />
     {% include "./src/components/og.njk" %}    
     {% include "./src/components/favicon.njk" %}
   </head>
