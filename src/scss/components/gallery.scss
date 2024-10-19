@@ -30,7 +30,7 @@
     z-index: 1;
     color: theme.color("brand" "2");
     border-radius: 100%;
-    font-size: theme.size("font" "base");
+    font-size: theme.size("font" "enlarged");
 
     @include u.focus(theme.color("brand" "2"));
 
