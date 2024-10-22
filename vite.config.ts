@@ -27,7 +27,7 @@ function readGalleryImages(): GalleryImage[] {
         .sort()
         .map((src) => ({
             src: `/assets/images/gallery/${src}`,
-            alt: ALTS[src],
+            alt: (src in ALTS) ? ALTS[src] : "Портрет по фото",
             srcMin: `/assets/images/gallery/${basename(src, ".webp")}.min.webp`,
         }));
 }
