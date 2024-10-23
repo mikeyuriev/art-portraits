@@ -62,6 +62,11 @@
     gap: theme.size("spacing" "md");
     font-size: theme.size("font" "base");
 
+    @media screen and (min-width: theme.device("md")) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     & > .icon-link--phone > .icon-link__text {
         font-weight: bold;
         font-size: theme.size("font" "small");
