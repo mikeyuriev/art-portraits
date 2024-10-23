@@ -45,14 +45,22 @@
         @include font-size("text" "heading");
     }
 
-    p,
-    ul {
+    p, ul, ol {
         @include font-size("text" "normal");
     }
 
-    li {
+    ul > li {
         list-style: disc;
         list-style-position: inside;
+    }
+
+    ol > li {
+        list-style: decimal;
+        list-style-position: inside;
+        margin-bottom: theme.size("font" "base");
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     strong {
