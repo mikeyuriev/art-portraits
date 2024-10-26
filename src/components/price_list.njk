@@ -18,7 +18,10 @@
     <ul class="price-list__list price-list__list--extra">
     {% for item in DATA.priceList.extra %}
         <li>
-            {{ item.item }} — {{ item.price }}
+            {{ item.item }}
+            {% if item.price %} 
+                — {{ item.price }}
+            {% endif %}
         </li>
     {% endfor %}
     </ul>
