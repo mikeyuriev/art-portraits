@@ -4,12 +4,17 @@
 .gallery {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: calc(theme.size("font" "base") * 2);
     padding: theme.size("padding" "page");
     background-color: theme.color("brand"  "5");
 }
 
+.gallery__text-content {
+    @include u.text-container();
+}
+
 .gallery__swiper-container {
+    align-self: center;
     display: grid;
 }
 
