@@ -35,7 +35,7 @@
 @mixin text-container() {
     font-size: theme.size("font" "base");
     & > * {
-        margin-bottom: theme.size("font" "base");
+        margin-bottom: 1em;
         &:last-child {
             margin-bottom: 0;
         }
@@ -43,6 +43,7 @@
 
     h2 {
         @include font-size("text" "heading");
+        margin-bottom: 0.5em;
     }
 
     p, ul, ol {
@@ -57,7 +58,7 @@
     ol > li {
         list-style: decimal;
         list-style-position: inside;
-        margin-bottom: theme.size("font" "base");
+        margin-bottom: 1em;
         &:last-child {
             margin-bottom: 0;
         }
@@ -74,7 +75,7 @@
         color: theme.color("accent");
         overflow: visible;
         text-align: center;
-        margin: calc(theme.size("font" "base") * 2) 0;
+        margin: 2em 0;
     }
 }
 
