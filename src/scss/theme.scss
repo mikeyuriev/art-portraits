@@ -17,9 +17,9 @@
 }
 
 @function fluid-size($min, $max, $min-vw: $fluid-min, $max-vw: $fluid-max) {
-    $unit: unit($min);
+    $unit: math.unit($min);
 
-    @if (unit($max), unit($min-vw), unit($max-vw)) !=($unit, $unit, $unit) {
+    @if (math.unit($max), math.unit($min-vw), math.unit($max-vw)) !=($unit, $unit, $unit) {
         @error "fluid-size(): Units doesn't match";
     }
 

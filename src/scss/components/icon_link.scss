@@ -15,7 +15,7 @@
         $bg-color: theme.color("contact-link" $id);
         &--#{$id} {
             @if color.alpha($bg-color) > 0.5 {
-                @if color.lightness($bg-color) <= 50% {
+                @if color.channel($bg-color, "lightness", $space: hsl) <= 50% {
                     color: theme.color("white");
                 } @else {
                     color: theme.color("black");
