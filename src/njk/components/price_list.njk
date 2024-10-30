@@ -1,0 +1,31 @@
+{% macro list(items) %}
+    {% for item in items %}
+            <li>
+            {{ item.width }}x{{ item.height }} см. — {{ item.price }} руб.
+            {% if item.action %}
+                <strong>Сейчас идёт АКЦИЯ на портреты этого размера — {{ item.action }} руб. вместо {{ item.price }} руб!</strong>
+            {% endif %}
+            </li>
+    {% endfor %}
+{% endmacro %}
+
+<section class="price-list">
+    <h2>Цены</h2>
+    <p>Печать портрета на натуральном холсте с натяжкой на деревянный подрамник. Цена указана за изображение одного человека, за каждое дополнительное лицо на портрете прибавляем 900 руб.</p>
+    <ul class="price-list__list price-list__list--main">
+    {{ list(DATA.priceList.main)}}
+    </ul>
+    <ul class="price-list__list price-list__list--extra">
+    {% for item in DATA.priceList.extra %}
+        <li>
+            {{ item.item }}
+            {% if item.price %} 
+                — {{ item.price }}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% markdown %}
+        {% include "src/md/price_list_text.md" %}
+    {% endmarkdown %}
+</section>

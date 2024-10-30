@@ -1,4 +1,4 @@
-import { resolve, basename } from "node:path";
+import { join, resolve } from "node:path";
 import { readdirSync } from "node:fs";
 import { defineConfig } from "vite";
 import nunjucksPlugin from "vite-plugin-nunjucks";
@@ -16,19 +16,20 @@ nunjucksMarkdown.register(nunjucksEnv, marked);
 interface GalleryImage {
     src: string;
     alt: string;
-    srcMin: string;
 }
 
-function readGalleryImages(): GalleryImage[] {
+function readGalleryImages(key: string): GalleryImage[] {
     const images = [
-        ...readdirSync(resolve(__dirname, "src/assets/images/gallery")),
+        ...readdirSync(resolve(__dirname, "src/assets/images/gallery", key)),
     ];
     return [...images.filter((src) => !src.endsWith(".min.webp"))]
         .sort()
         .map((src) => ({
-            src: `/assets/images/gallery/${src}`,
-            alt: (src in ALTS) ? ALTS[src] : "Портрет по фото",
-            srcMin: `/assets/images/gallery/${basename(src, ".webp")}.min.webp`,
+            src: join("/assets/images/gallery/", key, src),
+            alt:
+                key in ALTS && src in ALTS[key]
+                    ? ALTS[key][src]
+                    : "Портрет по фото",
         }));
 }
 
@@ -58,6 +59,13 @@ export default defineConfig({
             "~": resolve(__dirname, "src"),
         },
     },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: "modern-compiler",
+            },
+        },
+    },
     plugins: [
         nunjucksPlugin({
             templatesDir: resolve(__dirname, "src"),
@@ -67,7 +75,10 @@ export default defineConfig({
                 "index.html": {
                     DATA: {
                         ...DATA,
-                        galleryImages: readGalleryImages(),
+                        galleryImages: {
+                            top: readGalleryImages("top"),
+                            bottom: readGalleryImages("bottom"),
+                        },
                         workflowImages: readWorkflowImages(),
                     },
                 },

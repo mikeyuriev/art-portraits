@@ -9,74 +9,21 @@
     @include u.text-container();
 }
 
-.gallery__swiper-container {
-    align-self: center;
-    display: grid;
+.gallery__images {
     margin-top: 1em;
-}
-
-.gallery__swiper {
-    grid-row: 1 / 4;
-    grid-column: 1/ 4;
-    width: 100%;
-    max-width: 28rem; // FIXME
-    background-color: theme.color("brand" "4");
-    @media screen and (orientation: landscape) {
-        grid-column: 2;
+    display: grid;
+    gap: theme.size("spacing" "xl");
+    @media screen and (min-width: theme.device("sm")) {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-.gallery__button {
-    display: block;
-    grid-row: 2;
-    z-index: 1;
-    color: theme.color("brand" "2");
-    border-radius: 100%;
-    font-size: theme.size("font" "enlarged");
-
-    @include u.focus(theme.color("brand" "2"));
-
-    @media screen and (orientation: landscape) {
-        color: theme.color("brand" "4");
-        opacity: 1;
-
-        @include u.focus(theme.color("brand" "4"));
-    }
-
-    &--prev {
-        grid-column: 1;
-        margin-left: 1.5em;
-        @media screen and (orientation: landscape) {
-            margin-left: 0;
-            margin-right: 1.5em;
-        }
-        @include u.icon("arrow-left", 3em);
-    }
-    &--next {
-        grid-column: 3;
-        margin-right: 1.5em;
-        @media screen and (orientation: landscape) {
-            margin-right: 0;
-            margin-left: 1.5em;
-        }
-        @include u.icon("arrow-right", 3em);
-    }
-}
-
-.gallery__placeholder {
-    position: absolute;
-    overflow: hidden;
-    @include u.inset();
-}
-
-.gallery__placeholder-image {
-    max-width: 100%;
-    height: auto;
-    filter: blur(16px);
+.gallery__image-container {
+    background-color: theme.color("brand"  "4");
 }
 
 .gallery__image {
     position: relative;
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }

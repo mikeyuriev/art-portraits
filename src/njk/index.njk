@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ DATA.seo.title }}</title>
+    <meta name="description" content="{{ DATA.seo.description }}" />
+    <link rel="canonical" href="{{ DATA.seo.url }}" />
+    {% include "./components/og.njk" %}    
+    {% include "./components/favicon.njk" %}
+  </head>
+  <body>
+    {% include "./components/yandex_metrika.njk" %}
+    <div class="page">
+      {% include "./components/hero.njk" %}
+      {% include "./components/main.njk" %}
+      {% include "./components/footer.njk" %}
+      <script type="module" src="/index.ts"></script>
+    </div>
+  </body>
+</html>

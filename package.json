@@ -28,7 +28,5 @@
     "vite-plugin-minify": "^2.0.0",
     "vite-plugin-nunjucks": "^0.2.0"
   },
-  "dependencies": {
-    "swiper": "^11.1.12"
-  }
+  "dependencies": {}
 }

@@ -1,0 +1,21 @@
+{% macro icon_link(id) %}
+<a class="icon-link icon-link--{{id}}" href="{{ DATA.contactLinks[id].href }}">
+    <span class="icon-link__text">{{ DATA.contactLinks[id].text }}</span>
+</a>
+{% endmacro %}
+
+{% macro gallery(key, header, text) %}
+<section class="gallery gallery--{{key}}">
+    <h2>{{ header }}</h2>
+    {% if text %}
+        <p>{{ text }}</p>
+    {% endif %}
+    <div class="gallery__images">
+        {% for image in DATA.galleryImages[key] %}
+            <div class="gallery__image-container">
+                <img class="gallery__image" loading="lazy" src="{{image.src}}" width="512" height="701" alt="{{image.alt}}">
+            </div>                
+        {% endfor %}
+    </div>
+</section>
+{% endmacro %}
