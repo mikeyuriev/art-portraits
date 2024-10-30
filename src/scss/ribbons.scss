@@ -1,6 +1,6 @@
 @use "theme";
 
-.greeting, .gallery, .price-list, .sizes, .workflow {
+.greeting, .gallery--top, .price-list, .sizes, .workflow, .contacts-mid {
     $padding: theme.size("padding" "inter");
     $height: theme.size("ribbon");
     $height_hack: calc($height + 2px);

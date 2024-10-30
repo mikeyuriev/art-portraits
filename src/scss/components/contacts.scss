@@ -1,0 +1,7 @@
+@use "../theme";
+
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: theme.size("spacing" "md");
+}

@@ -1,9 +1,3 @@
-{% import "../utilities.njk" as u with context %}
-
 <footer class="page__block page__block--footer footer">
-    <div class="footer__messangers">
-        {{ u.icon_link("whatsapp") }}
-        {{ u.icon_link("vk") }}
-    </div>
-    {{ u.icon_link("phone") }}
+    {% include "./contacts.njk" %}
 </footer>

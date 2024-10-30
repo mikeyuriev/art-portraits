@@ -1,7 +1,7 @@
 @use "../theme";
 @use "../utilities" as u;
 
-.footer {
+.contacts-mid {
     padding: theme.size("padding" "page");
     background-color: theme.color("brand" "4");
     display: flex;
@@ -10,4 +10,3 @@
     font-size: theme.size("font" "base");
     color: theme.color("white");
 }
-
