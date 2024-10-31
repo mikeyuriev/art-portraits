@@ -1,10 +1,10 @@
 {% import "../utilities.njk" as u with context %}
 <main class="page__block page__block--main main">
     {% include "./greeting.njk" %}
-    {{ u.gallery("top", "Примеры") }}
+    {% include "./gallery_top.njk" %}
     {% include "./price_list.njk" %}
     {% include "./sizes.njk" %}
     {% include "./workflow.njk" %}
     {% include "./contacts_mid.njk" %}
-    {{ u.gallery("bottom", "Галерея", "Выберите примерный фон или образ для вашего портрета:") }}
+    {% include "./gallery_bottom.njk" %}
 </main>

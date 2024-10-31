@@ -11,6 +11,9 @@
 
 .gallery__images {
     margin-top: 1em;
+    .gallery--bottom & {
+        margin-bottom: 2em;
+    }
     display: grid;
     gap: theme.size("spacing" "xl");
     @media screen and (min-width: theme.device("sm")) {
