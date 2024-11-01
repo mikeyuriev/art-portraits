@@ -6,9 +6,9 @@
 
 {% macro gallery(key) %}
 <div class="gallery__images">
-    {% for image in DATA.galleryImages[key] %}
+    {% for image in DATA.gallery.images[key] %}
         <div class="gallery__image-container">
-            <img class="gallery__image" loading="lazy" src="{{image.src}}" width="512" height="701" alt="{{image.alt}}">
+            <img class="gallery__image" loading="lazy" src="{{image.src}}" alt="{{image.alt}}" {{image.sizeAttrs}}>
         </div>                
     {% endfor %}
 </div>

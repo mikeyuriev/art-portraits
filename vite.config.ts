@@ -6,6 +6,7 @@ import nunjucks from "nunjucks";
 import nunjucksMarkdown from "nunjucks-markdown";
 import { marked } from "marked";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
+import imageSize from "image-size";
 
 import * as DATA from "./src/data.json";
 import * as ALTS from "./src/gallery.json";
@@ -15,6 +16,9 @@ nunjucksMarkdown.register(nunjucksEnv, marked);
 
 interface GalleryImage {
     src: string;
+    width: number | undefined;
+    height: number | undefined;
+    sizeAttrs: string;
     alt: string;
 }
 
@@ -22,15 +26,25 @@ function readGalleryImages(key: string): GalleryImage[] {
     const images = [
         ...readdirSync(resolve(__dirname, "src/assets/images/gallery", key)),
     ];
-    return [...images.filter((src) => !src.endsWith(".min.webp"))]
-        .sort()
-        .map((src) => ({
+    return images.sort().map((src) => {
+        
+        const size = imageSize(
+            resolve(__dirname, "src/assets/images/gallery", key, src),
+        );
+        const alt: string =
+            key in ALTS && src in ALTS[key]
+                ? ALTS[key][src]
+                : "Портрет по фото";
+        const widthAttr: string = size.width ? `width="${size.width}"` : "";
+        const heightAttr: string = size.height ? `height="${size.height}"` : "";
+        return {
             src: join("/assets/images/gallery/", key, src),
-            alt:
-                key in ALTS && src in ALTS[key]
-                    ? ALTS[key][src]
-                    : "Портрет по фото",
-        }));
+            width: size.width,
+            height: size.height,
+            sizeAttrs: `${widthAttr} ${heightAttr}`,
+            alt,
+        };
+    });
 }
 
 function readWorkflowImages(): string[] {
@@ -75,9 +89,11 @@ export default defineConfig({
                 "index.html": {
                     DATA: {
                         ...DATA,
-                        galleryImages: {
-                            top: readGalleryImages("top"),
-                            bottom: readGalleryImages("bottom"),
+                        gallery: {
+                            images: {
+                                top: readGalleryImages("top"),
+                                bottom: readGalleryImages("bottom"),
+                            },
                         },
                         workflowImages: readWorkflowImages(),
                     },
