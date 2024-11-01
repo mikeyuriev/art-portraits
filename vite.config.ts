@@ -35,8 +35,8 @@ function readGalleryImages(key: string): GalleryImage[] {
             key in ALTS && src in ALTS[key]
                 ? ALTS[key][src]
                 : "Портрет по фото";
-        const widthAttr: string = size.width ? `width="${size.width}"` : "";
-        const heightAttr: string = size.height ? `height="${size.height}"` : "";
+        const widthAttr: string = size.width ? `width=${size.width}` : "";
+        const heightAttr: string = size.height ? `height=${size.height}` : "";
         return {
             src: join("/assets/images/gallery/", key, src),
             width: size.width,
