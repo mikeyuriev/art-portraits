@@ -53,6 +53,12 @@ function readWorkflowImages(): string[] {
         .map((src) => `/assets/images/workflow/${src}`);
 }
 
+function readReviewsImages(): string[] {
+    return [...readdirSync(resolve(__dirname, "src/assets/images/reviews"))]
+        .sort()
+        .map((src) => `/assets/images/reviews/${src}`);
+}
+
 export default defineConfig({
     root: "src",
     server: {
@@ -95,6 +101,7 @@ export default defineConfig({
                                 bottom: readGalleryImages("bottom"),
                             },
                         },
+                        reviewsImages: readReviewsImages(),
                         workflowImages: readWorkflowImages(),
                     },
                 },

@@ -1,0 +1,10 @@
+<section class="reviews">
+    <h2>Отзывы</h2>
+    <div class="reviews__images">
+        {% for image in DATA.reviewsImages %}
+            <div class="reviews__image-container">
+                <img class="reviews__image" loading="lazy" src="{{image}}" width="512" height="701" alt="Отзыв">
+            </div>                
+        {% endfor %}
+    </div>    
+</section>

@@ -1,0 +1,30 @@
+@use "../theme";
+@use "../utilities" as u;
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    padding: theme.size("padding" "page");
+    background-color: theme.color("brand"  "8");
+    @include u.text-container();
+}
+
+.reviews__images {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    display: grid;
+    gap: theme.size("spacing" "xl");
+    @media screen and (min-width: theme.device("sm")) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.reviews__image-container {
+    // background-color: theme.color("brand"  "4");
+}
+
+.reviews__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
