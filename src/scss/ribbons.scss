@@ -18,7 +18,7 @@
     padding-bottom: calc($padding + ($height * 0.5));
 }
 
-.greeting, .gallery--top, .price-list, .sizes, .workflow {
+.greeting, .gallery--top, .gallery--bottom, .price-list, .sizes, .workflow {
     $padding: theme.size("padding" "inter");
     $height: theme.size("ribbon");
     padding-bottom: calc($padding + ($height * 0.5));
